@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdsWithGaurav — Meta Ads Expert</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{
+      --blue:#1877f2;
+      --dark-blue:#0a3d8f;
+      --orange:#ff6b00;
+      --dark:#111827;
+      --gray:#6b7280;
+      --light:#f9fafb;
+    }
+    body{font-family:'Segoe UI',system-ui,sans-serif;background:#fff;color:var(--dark);}
+
+    /* NAV */
+    nav{
+      position:sticky;top:0;z-index:99;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid #e5e7eb;
+      padding:14px 24px;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+    .logo-icon{
+      width:42px;height:42px;border-radius:10px;
+      background:linear-gradient(135deg,#1877f2,#0a3d8f);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:900;font-size:18px;color:#fff;letter-spacing:-1px;
+    }
+    .logo-text{font-size:18px;font-weight:700;color:var(--dark);}
+    .logo-text span{color:var(--blue);}
+    .nav-cta{
+      background:var(--blue);color:#fff;
+      padding:9px 20px;border-radius:8px;
+      font-size:14px;font-weight:600;text-decoration:none;
+      transition:background 0.2s;
+    }
+    .nav-cta:hover{background:var(--dark-blue);}
+
+    /* HERO */
+    .hero{
+      background:linear-gradient(135deg,#0f1c3f 0%,#1877f2 60%,#0a5cc7 100%);
+      color:#fff;padding:80px 24px 70px;text-align:center;
+      position:relative;overflow:hidden;
+    }
+    .hero::before{
+      content:'';position:absolute;inset:0;
+      background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-badge{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);
+      border-radius:50px;padding:7px 18px;font-size:13px;font-weight:500;
+      margin-bottom:24px;letter-spacing:0.3px;
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:#4ade80;animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
+    .hero h1{
+      font-size:clamp(30px,5.5vw,56px);font-weight:800;line-height:1.15;
+      max-width:760px;margin:0 auto 20px;letter-spacing:-0.5px;
+    }
+    .hero h1 span{color:#fbbf24;}
+    .hero p{
+      font-size:clamp(15px,2.5vw,19px);opacity:0.88;
+      max-width:580px;margin:0 auto 36px;line-height:1.7;
+    }
+    .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    .btn-primary{
+      background:#ff6b00;color:#fff;
+      font-size:17px;font-weight:700;padding:15px 38px;
+      border-radius:50px;text-decoration:none;
+      box-shadow:0 4px 20px rgba(255,107,0,0.45);
+      transition:transform 0.2s,box-shadow 0.2s;
+    }
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,0,0.55);}
+    .btn-secondary{
+      background:rgba(255,255,255,0.12);color:#fff;
+      font-size:17px;font-weight:600;padding:15px 38px;
+      border-radius:50px;text-decoration:none;
+      border:1.5px solid rgba(255,255,255,0.35);
+      transition:background 0.2s;
+    }
+    .btn-secondary:hover{background:rgba(255,255,255,0.22);}
+    .hero-trust{font-size:13px;opacity:0.7;margin-top:22px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+    .hero-trust span::before{content:'✓ ';color:#4ade80;font-weight:700;}
+
+    /* STATS */
+    .stats-bar{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+      background:#fff;border-bottom:1px solid #e5e7eb;
+    }
+    .stat{
+      padding:24px 16px;text-align:center;
+      border-right:1px solid #e5e7eb;
+    }
+    .stat:last-child{border-right:none;}
+    .stat-num{font-size:28px;font-weight:800;color:var(--blue);}
+    .stat-label{font-size:12px;color:var(--gray);margin-top:4px;font-weight:500;}
+
+    /* SECTION BASE */
+    .section{padding:72px 24px;max-width:1000px;margin:0 auto;}
+    .section-label{
+      display:inline-block;background:#eff6ff;color:var(--blue);
+      font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+      padding:5px 14px;border-radius:50px;margin-bottom:14px;
+    }
+    .section-title{font-size:clamp(24px,4vw,38px);font-weight:800;line-height:1.2;margin-bottom:12px;}
+    .section-sub{font-size:16px;color:var(--gray);max-width:560px;line-height:1.7;}
+    .center{text-align:center;}
+    .center .section-sub{margin:0 auto;}
+
+    /* SERVICES */
+    .services-bg{background:var(--light);}
+    .services-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+      gap:20px;margin-top:40px;
+    }
+    .service-card{
+      background:#fff;border-radius:16px;padding:28px 24px;
+      border:1px solid #e5e7eb;
+      transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;
+    }
+    .service-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.08);border-color:#bfdbfe;}
+    .service-icon{
+      width:52px;height:52px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:26px;margin-bottom:16px;
+    }
+    .ic-blue{background:#eff6ff;}
+    .ic-orange{background:#fff7ed;}
+    .ic-green{background:#f0fdf4;}
+    .ic-purple{background:#faf5ff;}
+    .service-card h3{font-size:18px;font-weight:700;margin-bottom:8px;}
+    .service-card p{font-size:14px;color:var(--gray);line-height:1.7;}
+
+    /* HOW IT WORKS */
+    .steps-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:24px;margin-top:44px;position:relative;
+    }
+    .step{text-align:center;padding:0 12px;}
+    .step-circle{
+      width:64px;height:64px;border-radius:50%;
+      background:linear-gradient(135deg,var(--blue),var(--dark-blue));
+      color:#fff;font-size:22px;font-weight:800;
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 16px;
+      box-shadow:0 4px 16px rgba(24,119,242,0.35);
+    }
+    .step h3{font-size:16px;font-weight:700;margin-bottom:8px;}
+    .step p{font-size:13px;color:var(--gray);line-height:1.6;}
+
+    /* TESTIMONIALS */
+    .testi-bg{background:#f0f4ff;}
+    .testi-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+      gap:20px;margin-top:40px;
+    }
+    .testi-card{
+      background:#fff;border-radius:16px;padding:26px;
+      border:1px solid #dde3f0;
+    }
+    .stars{color:#f59e0b;font-size:15px;margin-bottom:12px;letter-spacing:2px;}
+    .testi-text{font-size:14px;line-height:1.8;color:#374151;font-style:italic;margin-bottom:16px;}
+    .testi-author{display:flex;align-items:center;gap:12px;}
+    .avatar{
+      width:40px;height:40px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-weight:700;font-size:14px;color:#fff;flex-shrink:0;
+    }
+    .author-name{font-size:14px;font-weight:700;color:var(--dark);}
+    .author-biz{font-size:12px;color:var(--gray);}
+
+    /* CTA BAND */
+    .cta-band{
+      background:linear-gradient(135deg,#ff6b00,#e53e00);
+      color:#fff;text-align:center;padding:64px 24px;
+    }
+    .cta-band h2{font-size:clamp(24px,4vw,40px);font-weight:800;margin-bottom:12px;}
+    .cta-band p{font-size:16px;opacity:0.9;max-width:520px;margin:0 auto 32px;line-height:1.7;}
+    .btn-white{
+      display:inline-block;background:#fff;color:#e53e00;
+      font-size:17px;font-weight:700;padding:15px 44px;
+      border-radius:50px;text-decoration:none;
+      transition:transform 0.2s,box-shadow 0.2s;
+      box-shadow:0 4px 20px rgba(0,0,0,0.15);
+    }
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.2);}
+    .cta-note{font-size:13px;opacity:0.8;margin-top:14px;}
+
+    /* LEAD FORM */
+    .form-section{background:#fff;padding:72px 24px;}
+    .form-wrapper{max-width:520px;margin:0 auto;}
+    .form-box{
+      background:#f9fafb;border-radius:20px;padding:40px 36px;
+      border:1px solid #e5e7eb;
+      box-shadow:0 8px 40px rgba(0,0,0,0.06);
+    }
+    .form-box h2{font-size:26px;font-weight:800;text-align:center;margin-bottom:6px;}
+    .form-box .sub{font-size:14px;color:var(--gray);text-align:center;margin-bottom:28px;line-height:1.6;}
+    .form-group{margin-bottom:14px;}
+    .form-group label{display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px;}
+    .form-group input,.form-group select{
+      width:100%;padding:13px 16px;
+      border:1.5px solid #d1d5db;border-radius:10px;
+      font-size:15px;background:#fff;outline:none;
+      transition:border-color 0.2s,box-shadow 0.2s;
+      color:var(--dark);
+    }
+    .form-group input:focus,.form-group select:focus{
+      border-color:var(--blue);
+      box-shadow:0 0 0 3px rgba(24,119,242,0.12);
+    }
+    .submit-btn{
+      width:100%;background:var(--blue);color:#fff;
+      border:none;padding:16px;border-radius:12px;
+      font-size:17px;font-weight:700;cursor:pointer;
+      margin-top:8px;transition:background 0.2s,transform 0.2s;
+    }
+    .submit-btn:hover{background:var(--dark-blue);transform:translateY(-1px);}
+    .privacy{font-size:12px;color:#9ca3af;text-align:center;margin-top:14px;}
+
+    /* CONTACT STRIP */
+    .contact-strip{
+      background:var(--dark);color:#fff;
+      display:flex;align-items:center;justify-content:center;
+      gap:32px;flex-wrap:wrap;padding:28px 24px;
+    }
+    .contact-item{display:flex;align-items:center;gap:10px;font-size:15px;}
+    .contact-icon{
+      width:38px;height:38px;border-radius:8px;
+      background:rgba(255,255,255,0.1);
+      display:flex;align-items:center;justify-content:center;font-size:18px;
+    }
+    .contact-item a{color:#60a5fa;text-decoration:none;font-weight:600;}
+    .contact-item a:hover{color:#93c5fd;}
+
+    /* FOOTER */
+    footer{
+      background:#0f1c3f;color:#6b7280;
+      text-align:center;padding:24px;font-size:13px;
+    }
+    footer .ft-logo{color:#fff;font-weight:700;font-size:15px;margin-bottom:6px;}
+    footer a{color:#6b7280;text-decoration:none;margin:0 8px;}
+    footer a:hover{color:#9ca3af;}
+
+    @media(max-width:480px){
+      .hero-btns{flex-direction:column;align-items:center;}
+      .hero-trust{flex-direction:column;gap:8px;}
+      .form-box{padding:28px 20px;}
+      .contact-strip{gap:18px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon">AG</div>
+    <span class="logo-text">Ads<span>With</span>Gaurav</span>
+  </a>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <a href="https://www.facebook.com/OfficialAdsWithGaurav" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:7px;background:#1877f2;color:#fff;padding:9px 16px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#0a5cc7'" onmouseout="this.style.background='#1877f2'">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      <span class="fb-label">Facebook</span>
+    </a>
+  </div>
+</nav>
+<style>
+@media(max-width:480px){.fb-label{display:none;}.nav-cta{font-size:13px;padding:9px 14px;}}
+</style>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><span class="dot"></span> Meta Ads Specialist — India's Top 1%</div>
+  <h1>Grow Your Business With <span>Smarter Meta Ads</span> That Actually Convert</h1>
+  <p>Stop wasting money on ads that don't work. Gaurav helps Indian businesses get real leads, real sales, and real ROI — every single month.</p>
+  <div class="hero-btns">
+    <a href="#contact-form" class="btn-primary">Book Free Strategy Call</a>
+    <a href="https://wa.me/919540362825" class="btn-secondary">WhatsApp Now</a>
+  </div>
+  <div class="hero-trust">
+    <span>No Hidden Charges</span>
+    <span>Results in 7 Days</span>
+    <span>Dedicated Support</span>
+    <span>100% Transparent</span>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Campaigns Launched</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">₹2Cr+</div>
+    <div class="stat-label">Ad Spend Managed</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">4.8x</div>
+    <div class="stat-label">Avg. ROAS Delivered</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">98%</div>
+    <div class="stat-label">Client Retention Rate</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="services-bg">
+  <div class="section">
+    <div class="center">
+      <span class="section-label">What We Offer</span>
+      <h2 class="section-title">Services Designed to Scale Your Business</h2>
+      <p class="section-sub">From setup to optimization — we handle everything so you can focus on running your business.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon ic-blue">🎯</div>
+        <h3>Meta Ads Management</h3>
+        <p>Full campaign setup, audience targeting, A/B testing, and daily optimization on Facebook & Instagram for maximum ROI.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon ic-orange">🔁</div>
+        <h3>Retargeting Campaigns</h3>
+        <p>Re-engage people who visited your site but didn't buy. Our retargeting strategy converts warm audiences into paying customers.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon ic-green">📋</div>
+        <h3>Lead Generation Ads</h3>
+        <p>Get qualified leads directly on WhatsApp or through instant forms. Perfect for services, real estate, and coaching businesses.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon ic-purple">🛒</div>
+        <h3>E-Commerce Sales Ads</h3>
+        <p>Dynamic Product Ads, catalog campaigns, and conversion-optimized funnels to drive consistent online sales.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon ic-blue">📊</div>
+        <h3>Pixel Setup & Analytics</h3>
+        <p>Proper Meta Pixel installation, Conversions API setup, and detailed reporting so you always know where your money goes.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon ic-orange">✏️</div>
+        <h3>Ad Creative Strategy</h3>
+        <p>High-converting copy, scroll-stopping visuals, and video ad scripts crafted specifically for your target audience.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section center" style="max-width:900px">
+  <span class="section-label">The Process</span>
+  <h2 class="section-title">How We Get You Results</h2>
+  <p class="section-sub" style="margin:0 auto">Simple, transparent, and proven — our 4-step process delivers results without the confusion.</p>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-circle">1</div>
+      <h3>Free Strategy Call</h3>
+      <p>We understand your business goals, budget, and target audience in a 30-min call.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">2</div>
+      <h3>Campaign Setup</h3>
+      <p>Pixel setup, audience research, ad creatives, and full campaign structure ready in 48 hours.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">3</div>
+      <h3>Launch & Optimize</h3>
+      <p>Campaigns go live and we optimize daily — scaling what works, killing what doesn't.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">4</div>
+      <h3>Report & Scale</h3>
+      <p>Weekly reports with clear data. Once profitable, we scale your budget for bigger returns.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testi-bg">
+  <div class="section">
+    <div class="center">
+      <span class="section-label">Client Stories</span>
+      <h2 class="section-title">Real Results. Real Businesses.</h2>
+      <p class="section-sub" style="margin:0 auto">Here's what our clients say after working with AdsWithGaurav.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Gaurav completely transformed our ad strategy. In the first month, our sales doubled and cost per lead dropped by 60%. Absolutely recommended!"</p>
+        <div class="testi-author">
+          <div class="avatar" style="background:#1877f2">RK</div>
+          <div><div class="author-name">Rahul Kapoor</div><div class="author-biz">Delhi — Fashion Brand</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"We were running ads on our own with zero results. After just 2 weeks with Gaurav, we got 45 quality leads for our real estate project. Game changer!"</p>
+        <div class="testi-author">
+          <div class="avatar" style="background:#059669">PS</div>
+          <div><div class="author-name">Priya Sharma</div><div class="author-biz">Mumbai — Real Estate</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Spent ₹15,000 and got ₹72,000 in sales — that's a 4.8x ROAS. Clear reporting, fast communication, and genuine expertise. Thank you Gaurav!"</p>
+        <div class="testi-author">
+          <div class="avatar" style="background:#7c3aed">AM</div>
+          <div><div class="author-name">Amit Mehta</div><div class="author-biz">Bangalore — Online Store</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Ready to Stop Wasting Ad Budget?</h2>
+  <p>Book your free strategy call today. No commitment, no pressure — just a clear roadmap for your business growth.</p>
+  <a href="#contact-form" class="btn-white">Get My Free Strategy Call</a>
+  <p class="cta-note">⏳ Limited spots available this month — Book before they fill up</p>
+</div>
+
+<!-- LEAD FORM -->
+<div class="form-section" id="contact-form">
+  <div class="form-wrapper">
+    <div style="text-align:center;margin-bottom:32px">
+      <span class="section-label">Get Started</span>
+      <h2 class="section-title">Book Your Free Consultation</h2>
+      <p style="color:var(--gray);font-size:15px;line-height:1.7">Fill in your details and Gaurav will personally reach out within 24 hours.</p>
+    </div>
+    <div class="form-box">
+      <h2>Let's Grow Together 🚀</h2>
+      <p class="sub">Tell us a bit about your business — we'll take it from there.</p>
+      <div class="form-group">
+        <label>Your Full Name *</label>
+        <input type="text" placeholder="e.g. Rohit Verma" required />
+      </div>
+      <div class="form-group">
+        <label>WhatsApp Number *</label>
+        <input type="tel" placeholder="+91 XXXXX XXXXX" required />
+      </div>
+      <div class="form-group">
+        <label>Business Type *</label>
+        <select>
+          <option value="">Select your business type</option>
+          <option>E-Commerce / Online Store</option>
+          <option>Real Estate</option>
+          <option>Education / Coaching</option>
+          <option>Restaurant / Food Business</option>
+          <option>Health & Fitness</option>
+          <option>Fashion & Clothing</option>
+          <option>Services (CA, Lawyer, etc.)</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Monthly Ad Budget (approx.)</label>
+        <select>
+          <option value="">Select budget range</option>
+          <option>Under ₹5,000</option>
+          <option>₹5,000 – ₹15,000</option>
+          <option>₹15,000 – ₹50,000</option>
+          <option>₹50,000 – ₹1,00,000</option>
+          <option>₹1,00,000+</option>
+        </select>
+      </div>
+      <button class="submit-btn" onclick="submitForm()">
+        Submit — Get Free Consultation
+      </button>
+      <p class="privacy">🔒 Your information is 100% safe. We never share your data.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip">
+  <div class="contact-item">
+    <div class="contact-icon">📞</div>
+    <div>
+      <div style="font-size:12px;color:#9ca3af;margin-bottom:2px">Call / WhatsApp</div>
+      <a href="tel:+919540362825">+91 95403 62825</a>
+    </div>
+  </div>
+  <div class="contact-item">
+    <div class="contact-icon">💬</div>
+    <div>
+      <div style="font-size:12px;color:#9ca3af;margin-bottom:2px">WhatsApp Message</div>
+      <a href="https://wa.me/919540362825">Chat on WhatsApp</a>
+    </div>
+  </div>
+  <div class="contact-item">
+    <div class="contact-icon">📍</div>
+    <div>
+      <div style="font-size:12px;color:#9ca3af;margin-bottom:2px">Location</div>
+      <span style="color:#e5e7eb">India — Serving PAN India</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p class="ft-logo">AdsWithGaurav</p>
+  <p style="margin-bottom:10px">Meta Ads Expert | Facebook & Instagram Advertising Specialist</p>
+  <p>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#contact-form">Contact</a>
+  </p>
+  <p style="margin-top:14px">© 2025 AdsWithGaurav. All rights reserved.</p>
+</footer>
+
+<script>
+function submitForm(){
+  var name = document.querySelectorAll('input')[0].value.trim();
+  var phone = document.querySelectorAll('input')[1].value.trim();
+  if(!name){ alert('Please enter your full name.'); return; }
+  if(!phone){ alert('Please enter your WhatsApp number.'); return; }
+  window.location.href = 'thank-you.html';
+}
+</script>
+</body>
+</html>
